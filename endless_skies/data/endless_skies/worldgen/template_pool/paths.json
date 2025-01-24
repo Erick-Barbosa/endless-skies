@@ -1,0 +1,30 @@
+{
+    "name": "endless_skies:paths",
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 5,
+            "element": {
+                "element_type": "empty_pool_element"
+            }
+        },
+        {
+            "weight": 50,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "endless_skies:paths/path_center",
+                "processors": "minecraft:empty",
+                "projection": "rigid"
+            }
+        },
+        {
+            "weight": 50,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "endless_skies:paths/path_final",
+                "processors": "minecraft:empty",
+                "projection": "rigid"
+            }
+        }
+    ]
+}

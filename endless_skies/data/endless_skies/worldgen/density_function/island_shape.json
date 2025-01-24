@@ -1,0 +1,22 @@
+{
+    "type": "flat_cache",
+    "argument": {
+    "type": "minecraft:shifted_noise",
+    "shift_x": {
+        "type": "minecraft:constant",
+        "argument": 0.5
+    },
+    "shift_y": {
+        "type": "end_islands",
+        "argument": -10.0
+    },
+    "shift_z": {
+        "type": "minecraft:constant",
+        "argument": 0.5
+    },
+    "noise": "continentalness_large",
+    "xz_scale": 1.5,
+    "y_scale": 3.0
+    }
+}
+  

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:range_choice",
+  "input": {
+    "type": "noise",
+    "noise": "minecraft:surface",
+    "xz_scale": 0.25,
+    "y_scale": 0.0
+  },
+  "max_exclusive": 1,
+  "min_inclusive": 1,
+  "when_in_range": 1,
+  "when_out_of_range": 1
+}

@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:clamp",
+        "min": -50,
+        "max": 280,
+        "input": {
+            "type": "minecraft:shifted_noise",
+            "xz_scale": 1.5,
+            "y_scale": 1.0,
+            "shift_x": "minecraft:overworld/continents",
+            "shift_y": {
+                "type": "end_islands",
+                "argument": 10000
+            },
+            "shift_z": "end/sloped_cheese",
+            "noise": "continentalness"
+        }
+  }
+  

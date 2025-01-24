@@ -1,0 +1,6 @@
+{
+    "type": "noise",
+    "noise": "surface",
+    "xz_scale": 0.4,
+    "y_scale": 1
+}

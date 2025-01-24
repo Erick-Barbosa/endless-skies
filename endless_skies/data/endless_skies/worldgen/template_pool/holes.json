@@ -1,0 +1,57 @@
+{
+    "name": "endless_skies:holes",
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 5,
+            "element": {
+                "element_type": "empty_pool_element"
+            }
+        },
+        {
+            "weight": 10,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "endless_skies:holes/hole_entry",
+                "processors": "minecraft:empty",
+                "projection": "rigid"
+            }
+        },
+        {
+            "weight": 15,
+            "element": {
+                "element_type": "single_pool_element",
+                "location": "endless_skies:holes/hole_core",
+                "processors": "minecraft:empty",
+                "projection": "rigid"
+            }
+        },
+        {
+            "weight": 20,
+            "element": {
+                "element_type": "single_pool_element",
+                "location": "endless_skies:holes/hole_corner",
+                "processors": "minecraft:empty",
+                "projection": "rigid"
+            }
+        },
+        {
+            "weight": 34,
+            "element": {
+                "element_type": "single_pool_element",
+                "location": "endless_skies:holes/hole_front_back",
+                "processors": "minecraft:empty",
+                "projection": "rigid"
+            }
+        },
+        {
+            "weight": 34,
+            "element": {
+                "element_type": "single_pool_element",
+                "location": "endless_skies:holes/hole_left_right",
+                "processors": "minecraft:empty",
+                "projection": "rigid"
+            }
+        }
+    ]
+}

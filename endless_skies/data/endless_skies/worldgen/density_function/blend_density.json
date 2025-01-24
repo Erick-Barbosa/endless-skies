@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:blend_density",
+    "argument": {
+      "type": "minecraft:shifted_noise",
+      "xz_scale": 1.5,
+      "y_scale": 6.5,
+      "shift_x": "minecraft:overworld/continents",
+      "shift_y": {
+        "type": "minecraft:constant",
+        "argument": 10
+      },
+      "shift_z": "overworld/continents",
+      "noise": "continentalness"
+    }
+  }
+  
