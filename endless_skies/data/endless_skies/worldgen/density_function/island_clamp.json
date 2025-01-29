@@ -1,7 +1,9 @@
 {
-    "type": "minecraft:y_clamped_gradient",
-    "from_y": 320,
-    "to_y": -20,
-    "from_value": 1.0,
-    "to_value": 1.0
-  }
+    "type": "blend_density",
+    "argument": {
+      "type": "noise",
+      "noise": "pillar",
+      "xz_scale": 2.0,
+      "y_scale": 1
+    }
+}

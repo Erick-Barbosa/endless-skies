@@ -1,13 +1,11 @@
 {
-  "type": "minecraft:range_choice",
-  "input": {
-    "type": "noise",
-    "noise": "minecraft:surface",
-    "xz_scale": 0.25,
-    "y_scale": 0.0
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_value": -1.5,
+    "from_y": -80,
+    "to_value": 1.5,
+    "to_y": 384
   },
-  "max_exclusive": 1,
-  "min_inclusive": 1,
-  "when_in_range": 1,
-  "when_out_of_range": 1
+  "argument2": "minecraft:overworld/offset"
 }

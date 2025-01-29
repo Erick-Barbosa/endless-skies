@@ -1,0 +1,16 @@
+{
+"type": "blend_density",
+    "argument": {
+        "type": "minecraft:spline",
+        "spline": {
+            "coordinate": "minecraft:y",
+            "points": [
+                { "location": -80, "derivative": 0.0, "value": 0.6 }, 
+                { "location": 10, "derivative": 0.0, "value": -0.4 },   
+                { "location": 43, "derivative": 0.0, "value": 0.6 },   
+                { "location": 133, "derivative": 0.0, "value": -0.4 },   
+                { "location": 166, "derivative": 0.0, "value": 0.6 }
+            ]
+        }
+    }
+}

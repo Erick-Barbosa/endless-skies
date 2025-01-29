@@ -1,8 +1,7 @@
 {
-    "sea_level": -100,
+  "sea_level": -90,
   "disable_mob_generation": false,
   "aquifers_enabled": false,
-  "ore_veins_enabled": true,
   "legacy_random_source": false,
   "default_block": {
     "Name": "minecraft:stone"
@@ -14,46 +13,228 @@
     }
   },
   "noise": {
-    "min_y": -64,
-    "height": 384,
+    "min_y": -80,
+    "height": 480,
     "size_horizontal": 4,
     "size_vertical": 1
   },
   "noise_router": {
-    "continents": "zero",
-    "barrier": "zero",
-    "depth": "zero",
-    "erosion": "zero",
+    "barrier": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:aquifer_barrier",
+      "xz_scale": 0.2,
+      "y_scale": 0.5
+    },
+    "continents": "minecraft:overworld/continents",
+    "depth": "endless_skies:island_depth",
+    "erosion": "minecraft:overworld/erosion",
     "final_density": "endless_skies:island_final_density",
-    "fluid_level_floodedness": "endless_skies:island_final_density",
-    "fluid_level_spread": "endless_skies:island_final_density",
-    "initial_density_without_jaggedness": "endless_skies:island_final_density",
-    "lava": "endless_skies:island_clamp",
-    "ridges": "endless_skies:island_shape",
-    "temperature": "endless_skies:island_density",
-    "vegetation": 0.0,
-    "vein_gap": "zero",
-    "vein_ridged": "zero",
-    "vein_toggle": "zero"
+    "fluid_level_floodedness": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:aquifer_fluid_level_floodedness",
+      "xz_scale": 0.2,
+      "y_scale": 0.3
+    },
+    "fluid_level_spread": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:aquifer_fluid_level_spread",
+      "xz_scale": 0.2,
+      "y_scale": 0.1
+    },
+    "initial_density_without_jaggedness": {
+      "type": "minecraft:add",
+      "argument1": 0.1171875,
+      "argument2": {
+        "type": "minecraft:mul",
+        "argument1": {
+          "type": "minecraft:y_clamped_gradient",
+          "from_value": 0.0,
+          "from_y": -64,
+          "to_value": 1.0,
+          "to_y": -40
+        },
+        "argument2": {
+          "type": "minecraft:add",
+          "argument1": -0.1171875,
+          "argument2": {
+            "type": "minecraft:add",
+            "argument1": -0.078125,
+            "argument2": {
+              "type": "minecraft:mul",
+              "argument1": {
+                "type": "minecraft:y_clamped_gradient",
+                "from_value": 1.0,
+                "from_y": 240,
+                "to_value": 0.0,
+                "to_y": 256
+              },
+              "argument2": {
+                "type": "minecraft:add",
+                "argument1": 0.078125,
+                "argument2": {
+                  "type": "minecraft:clamp",
+                  "input": {
+                    "type": "minecraft:add",
+                    "argument1": -0.703125,
+                    "argument2": {
+                      "type": "minecraft:mul",
+                      "argument1": 4.0,
+                      "argument2": {
+                        "type": "minecraft:quarter_negative",
+                        "argument": {
+                          "type": "minecraft:mul",
+                          "argument1": "minecraft:overworld/depth",
+                          "argument2": {
+                            "type": "minecraft:cache_2d",
+                            "argument": "minecraft:overworld/factor"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "max": 64.0,
+                  "min": -64.0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "lava": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:aquifer_lava",
+      "xz_scale": 0.4,
+      "y_scale": 1.0
+    },
+    "ridges": "endless_skies:island_ridge",
+    "temperature": "endless_skies:island_temperature",
+    "vegetation": {
+      "type": "minecraft:shifted_noise",
+      "noise": "minecraft:vegetation",
+      "shift_x": "minecraft:shift_x",
+      "shift_y": 0.0,
+      "shift_z": "minecraft:shift_z",
+      "xz_scale": 0.25,
+      "y_scale": 0.0
+    },
+    "vein_gap": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:ore_gap",
+      "xz_scale": 1.0,
+      "y_scale": 1.0
+    },
+    "vein_ridged": {
+      "type": "minecraft:add",
+      "argument1": -0.07999999821186066,
+      "argument2": {
+        "type": "minecraft:max",
+        "argument1": {
+          "type": "minecraft:abs",
+          "argument": {
+            "type": "minecraft:interpolated",
+            "argument": {
+              "type": "minecraft:range_choice",
+              "input": "minecraft:y",
+              "max_exclusive": 51.0,
+              "min_inclusive": -60.0,
+              "when_in_range": {
+                "type": "minecraft:noise",
+                "noise": "minecraft:ore_vein_a",
+                "xz_scale": 4.0,
+                "y_scale": 4.0
+              },
+              "when_out_of_range": 0.0
+            }
+          }
+        },
+        "argument2": {
+          "type": "minecraft:abs",
+          "argument": {
+            "type": "minecraft:interpolated",
+            "argument": {
+              "type": "minecraft:range_choice",
+              "input": "minecraft:y",
+              "max_exclusive": 51.0,
+              "min_inclusive": -60.0,
+              "when_in_range": {
+                "type": "minecraft:noise",
+                "noise": "minecraft:ore_vein_b",
+                "xz_scale": 4.0,
+                "y_scale": 4.0
+              },
+              "when_out_of_range": 0.0
+            }
+          }
+        }
+      }
+    },
+    "vein_toggle": {
+      "type": "minecraft:interpolated",
+      "argument": {
+        "type": "minecraft:range_choice",
+        "input": "minecraft:y",
+        "max_exclusive": 51.0,
+        "min_inclusive": -60.0,
+        "when_in_range": {
+          "type": "minecraft:noise",
+          "noise": "minecraft:ore_veininess",
+          "xz_scale": 1.5,
+          "y_scale": 1.5
+        },
+        "when_out_of_range": 0.0
+      }
+    }
   },
+  "ore_veins_enabled": true,
   "spawn_target": [
     {
-      "temperature": [-1, 1],
-      "humidity": [-1, 1],
-      "continentalness": [-0.11, 1],
-      "erosion": [-1, 1],
-      "weirdness": [-1, -0.16],
-      "depth": 0,
-      "offset": 0
+      "continentalness": [
+        -0.11,
+        1.0
+      ],
+      "depth": 0.0,
+      "erosion": [
+        -1.0,
+        1.0
+      ],
+      "humidity": [
+        -1.0,
+        1.0
+      ],
+      "offset": 0.0,
+      "temperature": [
+        -1.0,
+        1.0
+      ],
+      "weirdness": [
+        -1.0,
+        -0.16
+      ]
     },
     {
-      "temperature": [-1, 1],
-      "humidity": [-1, 1],
-      "continentalness": [-0.11, 1],
-      "erosion": [-1, 1],
-      "weirdness": [0.16, 1],
-      "depth": 0,
-      "offset": 0
+      "continentalness": [
+        -0.11,
+        1.0
+      ],
+      "depth": 0.0,
+      "erosion": [
+        -1.0,
+        1.0
+      ],
+      "humidity": [
+        -1.0,
+        1.0
+      ],
+      "offset": 0.0,
+      "temperature": [
+        -1.0,
+        1.0
+      ],
+      "weirdness": [
+        0.16,
+        1.0
+      ]
     }
   ],
   "surface_rule": {
@@ -75,14 +256,14 @@
               "if_true": {
                 "type": "stone_depth",
                 "surface_type": "floor",
-                "offset": -3,
+                "offset": 0,
                 "add_surface_depth": true,
                 "secondary_depth_range": 1
               },
               "then_run": {
                 "type": "block",
                 "result_state": {
-                  "Name": "orange_wool",
+                  "Name": "grass_block",
                   "Properties": {}
                 }
               }
